@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/08 23:11:16 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/09 00:26:48 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,19 @@ void	check_args(int argc, char **argv)
 	{
 		exit_error("Wrong map extension\n", NULL);
 	}
+	if (argv[1][arg_len - 5] == '/')
+	{
+		exit_error("No map name\n", NULL);
+	}
 }
 
 int main(int argc, char **argv)
 {
 	t_list list;
-	(void)list;
+
 	check_args(argc, argv);
+	map_treatment(&list, argv[1]);
+
+
+
 }
