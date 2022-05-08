@@ -13,13 +13,17 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror $(FLAGS_INC) -g
 SFLAGS = -Wall -Wextra -Werror -fsanitize=address $(FLAGS_INC) -g
-LFLAGS = -Wall -Wextra -Werror -fsanitize=leaks $(FLAGS_INC) -g
+LFLAGS = -Wall -Wextra -Werror -fsanitize=leak $(FLAGS_INC) -g
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
-SRCS_MAIN = main
+SRCS_MAIN     = main
+SRCS_MAP      = parsing
+SRCS_UTILITY  = utils
 
-SRC = $(addsuffix .c, $(addprefix sources/, $(SRCS_MAIN)))
+SRC = $(addsuffix .c, $(addprefix sources/, $(SRCS_MAIN))) \
+      $(addsuffix .c, $(addprefix sources/map/, $(SRCS_MAP))) \
+      $(addsuffix .c, $(addprefix sources/utility/, $(SRCS_UTILITY)))
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
@@ -73,7 +77,7 @@ fclean: message
 	@rm -f $(OBJS)
 	@echo "Deleting executables..."
 	@rm -f $(BIN_DIR)/$(PROGRAM)
-	@rmdir $(OBJ_DIR) || true
+	@rm -r $(OBJ_DIR) || true
 	@rmdir $(BIN_DIR) || true
 	@echo "\033[0m"
 
