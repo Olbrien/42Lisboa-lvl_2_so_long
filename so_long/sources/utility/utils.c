@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:01 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 02:19:14 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/09 04:11:42 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	debug(t_list *list)
 	int	i;
 
 	i = 0;
+	write(1, "\n", 1);
 	while (list->map.map_splitted[i] != NULL)
 	{
 		write(1, list->map.map_splitted[i], \
@@ -57,4 +58,15 @@ void	debug(t_list *list)
 		write(1, "\n", 1);
 		i++;
 	}
+	write(1, "\nHeight: ", 9);
+	ft_putnbr_fd(list->map.height, 1);
+	write(1, "\nWidth: ", 8);
+	ft_putnbr_fd(list->map.width, 1);
+	write(1, "\nCollectibles: ", 15);
+	ft_putnbr_fd(list->map.collectibles, 1);
+	write(1, "\nStarting positions: ", 21);
+	ft_putnbr_fd(list->map.players, 1);
+	write(1, "\nExits: ", 8);
+	ft_putnbr_fd(list->map.map_exit, 1);
+	write(1, "\n", 1);
 }

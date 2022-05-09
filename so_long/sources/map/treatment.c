@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:07 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 03:25:42 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/09 03:40:13 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,14 @@ void	map_treatment(t_list *list, char *map_file)
 {
 	list->map.map = NULL;
 	list->map.map_splitted = NULL;
+	list->map.height = 0;
+	list->map.width = 0;
+	list->map.collectibles = 0;
+	list->map.map_exit = 0;
+	list->map.players = 0;
 	parse_map_to_struct(list, map_file);
 	remove_new_lines_from_map(list, 0, 0);
 	check_if_map_is_rectangular(list);
 	check_if_map_is_closed(list);
+	check_map_components(list);
 }

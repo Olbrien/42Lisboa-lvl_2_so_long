@@ -6,11 +6,39 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 02:28:33 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 03:21:34 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/09 03:56:23 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_map_components(t_list *list)
+{
+	int		i;
+	char	*valid_components;
+
+	valid_components = "01CEP";
+	i = 0;
+	while (list->map.map[i] != '\0')
+	{
+		if (list->map.map[i] != '\n'
+			&& ft_strchr(valid_components, list->map.map[i]) == NULL)
+			exit_error("Invalid character\n", list);
+		if (list->map.map[i] == 'C')
+			list->map.collectibles++;
+		else if (list->map.map[i] == 'E')
+			list->map.map_exit++;
+		else if (list->map.map[i] == 'P')
+			list->map.players++;
+		i++;
+	}
+	if (list->map.collectibles < 1)
+		exit_error("Wrong number of collectibles\n", list);
+	if (list->map.map_exit < 1)
+		exit_error("Wrong number of map exits\n", list);
+	if (list->map.players < 1)
+		exit_error("Wrong number of starting positions\n", list);
+}
 
 void	check_if_map_is_closed(t_list *list)
 {
