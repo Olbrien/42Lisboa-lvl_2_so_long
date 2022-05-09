@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 22:58:07 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/08 23:05:44 by tisantos         ###   ########.fr       */
+/*   Created: 2022/05/09 00:36:53 by tisantos          #+#    #+#             */
+/*   Updated: 2022/05/09 02:19:28 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	parse_map(t_list *list, char *arg)
+size_t	ft_strlen(const char *str)
 {
-	(void)list;
-	(void)arg;
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

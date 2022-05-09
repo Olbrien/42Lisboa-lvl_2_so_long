@@ -18,8 +18,8 @@ LFLAGS = -Wall -Wextra -Werror -fsanitize=leak $(FLAGS_INC) -g
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
 SRCS_MAIN     = main
-SRCS_MAP      = parsing
-SRCS_UTILITY  = utils
+SRCS_MAP      = treatment validation
+SRCS_UTILITY  = utils ft_split ft_strdup ft_strjoin ft_strlen
 
 SRC = $(addsuffix .c, $(addprefix sources/, $(SRCS_MAIN))) \
       $(addsuffix .c, $(addprefix sources/map/, $(SRCS_MAP))) \

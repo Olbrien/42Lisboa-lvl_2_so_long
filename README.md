@@ -25,6 +25,23 @@ Download the repository.
 
 <code>
 
+Invalid:
+	./binaries/so_long ./maps/invalid/.ber						✅
+	./binaries/so_long ./maps/invalid/bad_extension				✅
+	./binaries/so_long ./maps/invalid/							✅
+	./binaries/so_long ./maps/invalid/empty_map.ber				✅
+	./binaries/so_long ./maps/invalid/line_break_middle.ber		✅
+	./binaries/so_long ./maps/invalid/line_break_middle2.ber	✅
+	./binaries/so_long ./maps/invalid/line_break_middle3.ber	✅
+	./binaries/so_long ./maps/invalid/line_break_middle4.ber	✅
+	./binaries/so_long ./maps/invalid/line_breaks.ber			✅
+
+Valid:
+	./binaries/so_long ./maps/valid/new_line_begin.ber			✅
+	./binaries/so_long ./maps/valid/new_line_end.ber			✅
+	./binaries/so_long ./maps/valid/new_lines_begin.ber			✅
+	./binaries/so_long ./maps/valid/no_new_line_end.ber			✅
+
 
 ---------------------------------------------------------------------------------------------
 
