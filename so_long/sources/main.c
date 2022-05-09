@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 02:17:56 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/09 04:19:55 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ int	main(int argc, char **argv)
 {
 	t_list	list;
 
+	list.map.map = NULL;
+	list.map.map_splitted = NULL;
+	list.map.height = 0;
+	list.map.width = 0;
+	list.map.collectibles = 0;
+	list.map.map_exit = 0;
+	list.map.players = 0;
 	check_args(argc, argv);
 	map_treatment(&list, argv[1]);
 	if (DEBUG == 1)
