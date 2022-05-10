@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:01 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 23:18:00 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 06:19:59 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ void	free_list(t_list *list)
 	if (list->map.map_splitted != NULL)
 	{
 		while (list->map.map_splitted[i] != NULL)
-		{
-			free(list->map.map_splitted[i]);
-			i++;
-		}
+			free(list->map.map_splitted[i++]);
 		free(list->map.map_splitted);
+	}
+	i = 0;
+	if (list->tilemap != NULL)
+	{
+		while (i < list->map.width)
+			free(list->tilemap[i++]);
+		free(list->tilemap);
 	}
 }
 

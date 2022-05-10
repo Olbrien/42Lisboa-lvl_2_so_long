@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/so_long/binaries/so_long",
-			"args": ["${workspaceFolder}/so_long/maps/valid/subject/valid1.ber"],
+			"args": ["${workspaceFolder}/so_long/maps/valid/subject/valid3.ber"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

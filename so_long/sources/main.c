@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 04:06:56 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 06:22:01 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	config_list(t_list *list)
 	list->effects.img_white_flash_ptr = NULL;
 	list->effects.img_red_flash_ptr = NULL;
 	list->effects.img_pink_flash_ptr = NULL;
+
+	list->tilemap = NULL;
 }
 
 void	check_args(int argc, char **argv)
@@ -66,8 +68,10 @@ int	main(int argc, char **argv)
 	tilemap_treatment(&list);
 	if (DEBUG == 1)
 		debug(&list);
-	config_game(&list);
 	free_list(&list);
+
+
+	//config_game(&list);
 
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 04:07:49 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 05:19:10 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@
 /*****************************************/
 # define IMG_SIZE 64
 
-# define EMPTY_SPACE 1
-# define WALL 2
-# define COLLECTIBLE 3
-# define MAP_EXIT 4
-# define PLAYER_POSITION 5
+# define EMPTY_SPACE '0'
+# define WALL '1'
+# define COLLECTIBLE 'C'
+# define MAP_EXIT 'E'
+# define PLAYER_POSITION 'P'
 
 /*****************************************/
 /*                 Data                  */
 /*****************************************/
 typedef struct s_tilemap
 {
-	int		type;
-	int		original_type;
+	char		type;
+	char		original_type;
 
-	int		width;
-	int		height;
+	int			width;
+	int			height;
 
 	struct s_tilemap *up;
 	struct s_tilemap *down;
