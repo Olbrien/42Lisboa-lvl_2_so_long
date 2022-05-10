@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:55 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 02:38:37 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:52:01 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	init_game(t_list *list)
 void	config_game(t_list *list)
 {
 	init_game(list);
+
+	images_treatment(list);
 
 	create_panel(list, &list->effects.img_white_flash_ptr, create_color(254, 254, 254, 0));
 	create_panel(list, &list->effects.img_pink_flash_ptr, create_color(238, 130, 238, 0));

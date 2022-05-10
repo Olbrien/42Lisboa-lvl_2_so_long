@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 18:20:00 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 19:14:13 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "events.h"
 # include "masks.h"
 # include "keys.h"
+# include "images.h"
 
 # ifndef DEBUG
 #  define DEBUG 1
@@ -80,6 +81,46 @@ typedef struct s_mlx
 
 }	t_mlx;
 
+/*********/
+/* Images */
+/*********/
+typedef struct s_images
+{
+	void	*door_01;
+	void	*door_02;
+
+	void	*effect_w;
+
+	void	*enemy_01;
+	void	*enemy_02;
+	void	*enemy_03;
+	void	*enemy_04;
+
+	void	*plant_01;
+	void	*plant_02;
+	void	*plant_03;
+	void	*plant_04;
+
+	void	*player_01;
+	void	*player_02;
+	void	*player_03;
+
+	void	*wall_01;
+	void	*wall_02;
+
+	void	*wall_d;
+	void	*wall_dl;
+	void	*wall_dr;
+
+	void	*wall_l;
+	void	*wall_r;
+
+	void	*wall_u;
+	void	*wall_ul;
+	void	*wall_ur;
+
+}	t_images;
+
 /********/
 /* Color */
 /********/
@@ -122,6 +163,7 @@ typedef struct s_list
 	struct s_map		map;
 	struct s_mlx		mlx;
 	struct s_effects	effects;
+	struct s_images		images;
 	struct s_tilemap	**tilemap;
 
 }	t_list;
@@ -141,6 +183,13 @@ char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *str, int c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+/*****************************************/
+/*                 Images                */
+/*****************************************/
+void	images_treatment(t_list *list);
+void	open_wall_images(t_list *list);
+void	open_wall2_images(t_list *list);
 
 /*****************************************/
 /*                  Map                  */

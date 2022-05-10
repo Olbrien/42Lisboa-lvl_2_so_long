@@ -24,17 +24,17 @@ else
 	LFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=leak $(FLAGS_INC) -g
 endif
 
-
-
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
 SRCS_MAIN     = main
+SRCS_IMAGES   = treatment treatment2
 SRCS_MAP      = treatment validation tilemap
-SRCS_MLX      = game panel hooks
+SRCS_MLX      = game panel hooks render
 SRCS_UTILITY  = utils ft_split ft_strdup ft_strjoin ft_strlen ft_strchr ft_putchar_fd \
 				ft_putnbr_fd
 
 SRC = $(addsuffix .c, $(addprefix sources/, $(SRCS_MAIN))) \
+      $(addsuffix .c, $(addprefix sources/images/, $(SRCS_IMAGES))) \
       $(addsuffix .c, $(addprefix sources/map/, $(SRCS_MAP))) \
       $(addsuffix .c, $(addprefix sources/mlx/, $(SRCS_MLX))) \
       $(addsuffix .c, $(addprefix sources/utility/, $(SRCS_UTILITY)))
