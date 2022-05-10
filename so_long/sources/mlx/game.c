@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:55 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 20:21:01 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 21:52:31 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 int	loop(t_list *list)
 {
+	static int	frames = 0;
+
+	render_animations(list, frames);
 	render_tiles(list);
+
+	frames++;
 
 	return (0);
 }
@@ -49,6 +54,7 @@ void	config_game(t_list *list)
 	init_game(list);
 
 	images_treatment(list);
+	fill_tilemap_with_images(list);
 
 	create_panel(list, &list->effects.img_white_flash_ptr, create_color(254, 254, 254, 0));
 	create_panel(list, &list->effects.img_pink_flash_ptr, create_color(238, 130, 238, 0));

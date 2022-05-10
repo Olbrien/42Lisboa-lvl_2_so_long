@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 20:42:41 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 22:10:45 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ typedef struct s_tilemap
 	struct s_tilemap	*down;
 	struct s_tilemap	*left;
 	struct s_tilemap	*right;
+
+	void				*image;
+	int					image_number;
 
 }	t_tilemap;
 
@@ -177,8 +180,11 @@ void	ft_putnbr_fd(int n, int fd);
 /*                 Images                */
 /*****************************************/
 void	images_treatment(t_list *list);
+
 void	open_wall_images(t_list *list);
 void	open_wall2_images(t_list *list);
+void	open_player_images(t_list *list);
+void	fill_tilemap_with_images(t_list *list);
 
 /*****************************************/
 /*                  Map                  */
@@ -199,10 +205,10 @@ void	config_game(t_list *list);
 int		key_press(int keycode, t_list *list);
 
 void	render_tiles(t_list *list);
+void	render_animations(t_list *list, int frames);
 
 void	color_panel(t_list *list, void **img_ptr, t_color color, int x);
 void	create_panel(t_list *list, void **img_ptr, t_color color);
 t_color	create_color(int r, int g, int b, int a);
-
 
 #endif
