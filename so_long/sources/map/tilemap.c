@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 04:06:18 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 06:19:19 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:22:15 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,22 @@ void	fill_tilemap_2(t_list *list, int y, int x)
 	list->tilemap[y][x].original_type = list->map.map_splitted[y][x];
 	list->tilemap[y][x].width = x;
 	list->tilemap[y][x].height = y;
-
 	if (y - 1 >= 0)
 		list->tilemap[y][x].up = &list->tilemap[y - 1][x];
 	else
 		list->tilemap[y][x].up = NULL;
-
 	if (y + 1 < list->map.height)
 		list->tilemap[y][x].down = &list->tilemap[y + 1][x];
 	else
 		list->tilemap[y][x].down = NULL;
-
 	if (x - 1 >= 0)
 		list->tilemap[y][x].left = &list->tilemap[y][x - 1];
 	else
 		list->tilemap[y][x].left = NULL;
-
 	if (x + 1 < list->map.width)
 		list->tilemap[y][x].right = &list->tilemap[y][x + 1];
 	else
 		list->tilemap[y][x].right = NULL;
-
 }
 
 void	fill_tilemap(t_list *list)
@@ -61,12 +56,11 @@ void	fill_tilemap(t_list *list)
 
 void	allocate_memory(t_list *list)
 {
-	int i;
+	int	i;
 
 	list->tilemap = malloc(sizeof(t_tilemap *) * list->map.height + 1);
 	if (!list->tilemap)
 		exit_error("Failed to allocate memory on the tilemap\n", list);
-
 	i = 0;
 	while (i < list->map.height)
 	{

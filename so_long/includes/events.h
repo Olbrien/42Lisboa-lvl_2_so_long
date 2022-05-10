@@ -6,22 +6,12 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 23:23:15 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 03:57:36 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:20:30 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
-
-# ifndef LINUX
-#  define LINUX 1
-# endif
-
-#if LINUX == 0
-# define BLABLA 11
-#else
-# define BLABLA 12
-#endif
 
 /*****************************************/
 /*                 Events                */

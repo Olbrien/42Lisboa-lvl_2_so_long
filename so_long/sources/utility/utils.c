@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:01 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 06:19:59 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:11:14 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_list(t_list *list)
 	i = 0;
 	if (list->tilemap != NULL)
 	{
-		while (i < list->map.width)
+		while (i < list->map.height)
 			free(list->tilemap[i++]);
 		free(list->tilemap);
 	}

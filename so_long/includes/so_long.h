@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 05:19:10 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:20:00 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 #  define DEBUG 1
 # endif
 
-
 /*****************************************/
 /*                Macros                 */
 /*****************************************/
@@ -47,18 +46,18 @@
 /*****************************************/
 typedef struct s_tilemap
 {
-	char		type;
-	char		original_type;
+	char				type;
+	char				original_type;
 
-	int			width;
-	int			height;
+	int					width;
+	int					height;
 
-	struct s_tilemap *up;
-	struct s_tilemap *down;
-	struct s_tilemap *left;
-	struct s_tilemap *right;
+	struct s_tilemap	*up;
+	struct s_tilemap	*down;
+	struct s_tilemap	*left;
+	struct s_tilemap	*right;
 
-} t_tilemap;
+}	t_tilemap;
 
 typedef struct s_map
 {
@@ -70,7 +69,7 @@ typedef struct s_map
 	int		map_exit;
 	int		players;
 
-} t_map;
+}	t_map;
 
 typedef struct s_mlx
 {
@@ -79,7 +78,7 @@ typedef struct s_mlx
 	int		height;
 	int		width;
 
-} t_mlx;
+}	t_mlx;
 
 /********/
 /* Color */
@@ -91,7 +90,7 @@ typedef struct s_color
 	int	b;
 	int	a;
 
-} t_color;
+}	t_color;
 
 /********************/
 /* Full Screen Panel */
@@ -105,7 +104,7 @@ typedef struct s_panel
 	int			x;
 	int			y;
 
-} t_panel;
+}	t_panel;
 
 typedef struct s_effects
 {
@@ -113,7 +112,7 @@ typedef struct s_effects
 	void	*img_red_flash_ptr;
 	void	*img_pink_flash_ptr;
 
-} t_effects;
+}	t_effects;
 
 /**********/
 /* General */
@@ -168,7 +167,6 @@ t_color	create_color(int r, int g, int b, int a);
 /*****************************************/
 /*                  Loop                 */
 /*****************************************/
-int key_press(int keycode, t_list *list);
-
+int		key_press(int keycode, t_list *list);
 
 #endif
