@@ -6,16 +6,25 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:55 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 18:52:01 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:21:01 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	game_loop(t_list *list)
+int	loop(t_list *list)
+{
+	render_tiles(list);
+
+	return (0);
+}
+
+void	hooks(t_list *list)
 {
 	mlx_hook(list->mlx.win_ptr, DESTROYNOTIFY, 0, &exit_no_error, list);
 	mlx_hook(list->mlx.win_ptr, KEYPRESS, KEYPRESSMASK, &key_press, list);
+
+	mlx_loop_hook(list->mlx.mlx_ptr, &loop, list);
 
 	mlx_loop(list->mlx.mlx_ptr);
 }
@@ -45,6 +54,6 @@ void	config_game(t_list *list)
 	create_panel(list, &list->effects.img_pink_flash_ptr, create_color(238, 130, 238, 0));
 	create_panel(list, &list->effects.img_red_flash_ptr, create_color(197, 4, 4, 0));
 
-	game_loop(list);
+	hooks(list);
 
 }

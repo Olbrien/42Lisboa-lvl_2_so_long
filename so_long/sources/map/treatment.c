@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:07 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 04:19:37 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:46:12 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ void	remove_new_lines_from_map(t_list *list, int i, int line_break)
 		exit_error("Map is empty\n", list);
 }
 
+void	remove_extra_starting_positions(t_list *list)
+{
+	int	i;
+	int	player_position;
+
+	i = 0;
+	player_position = 0;
+	while (list->map.map[i] != '\0')
+	{
+		if (list->map.map[i] == 'P')
+		{
+			if (player_position >= 1)
+				list->map.map[i] = '0';
+			player_position++;
+		}
+		i++;
+	}
+}
+
 void	parse_map_to_struct(t_list *list, char *map_file)
 {
 	int		map_fd;
@@ -66,6 +85,7 @@ void	parse_map_to_struct(t_list *list, char *map_file)
 void	map_treatment(t_list *list, char *map_file)
 {
 	parse_map_to_struct(list, map_file);
+	remove_extra_starting_positions(list);
 	remove_new_lines_from_map(list, 0, 0);
 	check_if_map_is_rectangular(list);
 	check_if_map_is_closed(list);

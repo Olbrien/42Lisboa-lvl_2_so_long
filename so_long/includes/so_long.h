@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 19:14:13 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:42:41 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,20 +133,9 @@ typedef struct s_color
 
 }	t_color;
 
-/********************/
-/* Full Screen Panel */
-/********************/
-typedef struct s_panel
-{
-	char		*pixels;
-	int			bpp;
-	int			line_size;
-	int			endian;
-	int			x;
-	int			y;
-
-}	t_panel;
-
+/**********/
+/* Effects */
+/***********/
 typedef struct s_effects
 {
 	void	*img_white_flash_ptr;
@@ -207,15 +196,13 @@ void	check_map_components(t_list *list);
 /*****************************************/
 void	config_game(t_list *list);
 
-/*****************************************/
-/*                 Panel                 */
-/*****************************************/
+int		key_press(int keycode, t_list *list);
+
+void	render_tiles(t_list *list);
+
+void	color_panel(t_list *list, void **img_ptr, t_color color, int x);
 void	create_panel(t_list *list, void **img_ptr, t_color color);
 t_color	create_color(int r, int g, int b, int a);
 
-/*****************************************/
-/*                  Loop                 */
-/*****************************************/
-int		key_press(int keycode, t_list *list);
 
 #endif

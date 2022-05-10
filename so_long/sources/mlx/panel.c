@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 01:33:12 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 18:23:50 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 20:06:52 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,28 @@ t_color	create_color(int r, int g, int b, int a)
 	return (color);
 }
 
-void	color_panel(t_list *list, void **img_ptr, t_panel panel, t_color color)
+void	color_panel(t_list *list, void **img_ptr, t_color color, int x)
 {
-	int	x;
-	int	y;
+	int		y;
+	int		bpp;
+	int		line_size;
+	int		endian;
+	char	*pixels;
 
-	panel.pixels = mlx_get_data_addr(*img_ptr, &panel.bpp,
-			&panel.line_size, &panel.endian);
-	if (!panel.pixels)
+	pixels = mlx_get_data_addr(*img_ptr, &bpp,
+			&line_size, &endian);
+	if (!pixels)
 		exit_error("mlx_get_data_addr error\n", list);
 	y = 0;
-	while (y < panel.y)
+	while (y < list->mlx.height)
 	{
 		x = 0;
-		while (x < panel.x)
+		while (x < list->mlx.width)
 		{
-			panel.pixels[(x * 4 + panel.line_size * y) + 0] = color.b;
-			panel.pixels[(x * 4 + panel.line_size * y) + 1] = color.g;
-			panel.pixels[(x * 4 + panel.line_size * y) + 2] = color.r;
-			panel.pixels[(x * 4 + panel.line_size * y) + 3] = color.a;
+			pixels[(x * 4 + line_size * y) + 0] = color.b;
+			pixels[(x * 4 + line_size * y) + 1] = color.g;
+			pixels[(x * 4 + line_size * y) + 2] = color.r;
+			pixels[(x * 4 + line_size * y) + 3] = color.a;
 			x++;
 		}
 		y++;
@@ -50,13 +53,9 @@ void	color_panel(t_list *list, void **img_ptr, t_panel panel, t_color color)
 
 void	create_panel(t_list *list, void **img_ptr, t_color color)
 {
-	t_panel	panel;
-
 	*img_ptr = mlx_new_image(list->mlx.mlx_ptr, list->mlx.width,
 			list->mlx.height);
 	if (!*img_ptr)
 		exit_error("Could not initialize image\n", list);
-	panel.x = list->mlx.width;
-	panel.y = list->mlx.height;
-	color_panel(list, img_ptr, panel, color);
+	color_panel(list, img_ptr, color, 0);
 }
