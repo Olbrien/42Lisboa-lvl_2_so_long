@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:55 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 21:52:31 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:30:16 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 int	loop(t_list *list)
 {
-	static int	frames = 0;
-
-	render_animations(list, frames);
+	static int		frames = 0;
+	//render_animations(list);
+	mlx_clear_window(list->mlx.mlx_ptr, list->mlx.win_ptr);
 	render_tiles(list);
 
+	if (frames > FRAME_RATE)
+	{
+		list->key_pressed = 0;
+		frames = 0;
+	}
 	frames++;
 
 	return (0);
@@ -26,10 +31,10 @@ int	loop(t_list *list)
 
 void	hooks(t_list *list)
 {
+	mlx_loop_hook(list->mlx.mlx_ptr, &loop, list);
+
 	mlx_hook(list->mlx.win_ptr, DESTROYNOTIFY, 0, &exit_no_error, list);
 	mlx_hook(list->mlx.win_ptr, KEYPRESS, KEYPRESSMASK, &key_press, list);
-
-	mlx_loop_hook(list->mlx.mlx_ptr, &loop, list);
 
 	mlx_loop(list->mlx.mlx_ptr);
 }

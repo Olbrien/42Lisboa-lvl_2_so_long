@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 20:48:06 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:24:09 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ void	config_list(t_list *list)
 	list->effects.img_pink_flash_ptr = NULL;
 
 	list->tilemap = NULL;
+
+	list->key_pressed = 0;
+	list->steps = 0;
+
+	list->current_player_x = 0;
+	list->current_player_y = 0;
 }
 
 void	check_args(int argc, char **argv)

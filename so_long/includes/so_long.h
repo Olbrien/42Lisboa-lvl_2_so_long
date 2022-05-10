@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 22:10:45 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:31:39 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@
 # include "images.h"
 
 # ifndef DEBUG
-#  define DEBUG 1
+#  define DEBUG 0
 # endif
 
 /*****************************************/
 /*                Macros                 */
 /*****************************************/
 # define IMG_SIZE 64
+# define FRAME_RATE 200
 
 # define EMPTY_SPACE '0'
 # define WALL '1'
@@ -158,6 +159,12 @@ typedef struct s_list
 	struct s_images		images;
 	struct s_tilemap	**tilemap;
 
+	int					key_pressed;
+	int					steps;
+
+	int					current_player_x;
+	int					current_player_y;
+
 }	t_list;
 
 /*****************************************/
@@ -203,9 +210,12 @@ void	check_map_components(t_list *list);
 void	config_game(t_list *list);
 
 int		key_press(int keycode, t_list *list);
+int		key_release(int keycode, t_list *list);
+
+void	move_player(t_list *list, char key_pressed, int x, int y);
 
 void	render_tiles(t_list *list);
-void	render_animations(t_list *list, int frames);
+void	render_animations(t_list *list);
 
 void	color_panel(t_list *list, void **img_ptr, t_color color, int x);
 void	create_panel(t_list *list, void **img_ptr, t_color color);
