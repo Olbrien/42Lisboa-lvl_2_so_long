@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:01 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 04:11:42 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/09 23:18:00 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void	exit_error(char *str, t_list *list)
 	write(2, "Error\n", 6);
 	write(2, str, len);
 	exit(1);
+}
+
+int	exit_no_error(t_list *list)
+{
+	if (list != NULL)
+		free_list(list);
+	exit(0);
 }
 
 void	debug(t_list *list)

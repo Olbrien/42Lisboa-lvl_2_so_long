@@ -11,19 +11,32 @@ FLAGS_INC   = -I $(INC_DIR)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror $(FLAGS_INC) -g
-SFLAGS = -Wall -Wextra -Werror -fsanitize=address $(FLAGS_INC) -g
-LFLAGS = -Wall -Wextra -Werror -fsanitize=leak $(FLAGS_INC) -g
+LINUX = -lbsd -lmlx -lXext -lX11 -lm
+MAC   = -lmlx -framework OpenGL -framework AppKit -lm
+
+ifeq ($(UNAME), Darwin)
+	CFLAGS = -Wall -Wextra -Werror -I $(MAC) $(FLAGS_INC) -g
+	SFLAGS = -Wall -Wextra -Werror -I $(MAC) -fsanitize=address $(FLAGS_INC) -g
+	LFLAGS = -Wall -Wextra -Werror -I $(MAC) -fsanitize=leak $(FLAGS_INC) -g
+else
+	CFLAGS = -Wall -Wextra -Werror -I $(LINUX) $(FLAGS_INC) -g
+	SFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=address $(FLAGS_INC) -g
+	LFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=leak $(FLAGS_INC) -g
+endif
+
+
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
 SRCS_MAIN     = main
-SRCS_MAP      = treatment validation
+SRCS_MAP      = treatment validation tilemap
+SRCS_MLX      = game panel hooks
 SRCS_UTILITY  = utils ft_split ft_strdup ft_strjoin ft_strlen ft_strchr ft_putchar_fd \
 				ft_putnbr_fd
 
 SRC = $(addsuffix .c, $(addprefix sources/, $(SRCS_MAIN))) \
       $(addsuffix .c, $(addprefix sources/map/, $(SRCS_MAP))) \
+      $(addsuffix .c, $(addprefix sources/mlx/, $(SRCS_MLX))) \
       $(addsuffix .c, $(addprefix sources/utility/, $(SRCS_UTILITY)))
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
@@ -48,7 +61,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(PROGRAM): $(OBJS)
 	@echo "\n\033[0;32mCompiling ${PROGRAM}..."
-	@$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
+	@$(CC) $(OBJS) $(CFLAGS) -o $(PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(PROGRAM) $(BIN_DIR)
 
@@ -56,13 +69,13 @@ $(PROGRAM): $(OBJS)
 
 debug_s: $(OBJS)
 	@echo "\n\033[0;32mCompiling ${PROGRAM}..."
-	@$(CC) $(SFLAGS) -o $(PROGRAM) $(OBJS)
+	@$(CC) $(OBJS) $(SFLAGS) -o $(PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(PROGRAM) $(BIN_DIR)
 
 debug_l: $(OBJS)
 	@echo "\n\033[0;32mCompiling ${PROGRAM}..."
-	@$(CC) $(LFLAGS) -o $(PROGRAM) $(OBJS)
+	@$(CC) $(OBJS) $(LFLAGS) -o $(PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(PROGRAM) $(BIN_DIR)
 

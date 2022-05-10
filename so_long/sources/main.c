@@ -6,11 +6,31 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 04:19:55 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/10 04:06:56 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	config_list(t_list *list)
+{
+	list->map.map = NULL;
+	list->map.map_splitted = NULL;
+	list->map.height = 0;
+	list->map.width = 0;
+	list->map.collectibles = 0;
+	list->map.map_exit = 0;
+	list->map.players = 0;
+
+	list->mlx.mlx_ptr = NULL;
+	list->mlx.win_ptr = NULL;
+	list->mlx.height = 0;
+	list->mlx.width = 0;
+
+	list->effects.img_white_flash_ptr = NULL;
+	list->effects.img_red_flash_ptr = NULL;
+	list->effects.img_pink_flash_ptr = NULL;
+}
 
 void	check_args(int argc, char **argv)
 {
@@ -40,16 +60,14 @@ int	main(int argc, char **argv)
 {
 	t_list	list;
 
-	list.map.map = NULL;
-	list.map.map_splitted = NULL;
-	list.map.height = 0;
-	list.map.width = 0;
-	list.map.collectibles = 0;
-	list.map.map_exit = 0;
-	list.map.players = 0;
+	config_list(&list);
 	check_args(argc, argv);
 	map_treatment(&list, argv[1]);
+	tilemap_treatment(&list);
 	if (DEBUG == 1)
 		debug(&list);
+	config_game(&list);
 	free_list(&list);
+
+	return(0);
 }
