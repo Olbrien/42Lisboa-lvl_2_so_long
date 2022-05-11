@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:55 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 04:12:31 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 04:50:52 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 int	loop(t_list *list)
 {
 	static int		frames = 0;
+	static int		enemy_frames = 0;
 
 	mlx_clear_window(list->mlx.mlx_ptr, list->mlx.win_ptr);
 	render_step_text(list);
 	render_tiles(list);
 	if (list->map.collectibles == 0)
 		render_exit(list);
+	if (enemy_frames > ENEMY_FRAMES)
+	{
+		render_enemy_patrol(list, 0);
+		enemy_frames = 0;
+	}
 	if (frames > FRAME_RATE)
 	{
 		render_animations(list);
@@ -28,6 +34,7 @@ int	loop(t_list *list)
 		frames = 0;
 	}
 	frames++;
+	enemy_frames++;
 	return (0);
 }
 
@@ -56,6 +63,6 @@ void	config_game(t_list *list)
 {
 	init_game(list);
 	images_treatment(list);
-	fill_tilemap_with_images(list);
+	fill_tilemap_with_images(list, 0, 0);
 	hooks(list);
 }

@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 19:13:21 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:27:05 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 04:48:55 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ void	open_wall_images(t_list *list)
 		exit_error("Could not load image wall_01\n", list);
 }
 
-void	fill_tilemap_with_images(t_list *list)
+void	fill_tilemap_with_images(t_list *list, int x, int y)
 {
-	int	x;
-	int	y;
-
 	y = 0;
 	while (y < list->map.height)
 	{

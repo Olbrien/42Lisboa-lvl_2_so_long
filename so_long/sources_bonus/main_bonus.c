@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:17:30 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 04:23:18 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char **argv)
 {
 	t_list	list;
 
+	srand(time(NULL));
 	config_list(&list);
 	check_args(argc, argv);
 	map_treatment(&list, argv[1]);

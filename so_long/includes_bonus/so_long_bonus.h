@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:54:13 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 04:49:03 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <time.h>
 
 # include "events_bonus.h"
 # include "masks_bonus.h"
@@ -28,7 +29,7 @@
 # include "images_bonus.h"
 
 # ifndef DEBUG
-#  define DEBUG 1
+#  define DEBUG 0
 # endif
 
 /*****************************************/
@@ -36,6 +37,7 @@
 /*****************************************/
 # define IMG_SIZE 64
 # define FRAME_RATE 200
+# define ENEMY_FRAMES 1000
 
 # define EMPTY_SPACE '0'
 # define WALL '1'
@@ -150,7 +152,7 @@ void	images_treatment(t_list *list);
 void	open_wall_images(t_list *list);
 void	open_wall2_images(t_list *list);
 void	open_player_images(t_list *list);
-void	fill_tilemap_with_images(t_list *list);
+void	fill_tilemap_with_images(t_list *list, int x, int y);
 
 /*****************************************/
 /*                  Map                  */
@@ -177,5 +179,6 @@ void	render_tiles(t_list *list);
 void	render_animations(t_list *list);
 void	render_exit(t_list *list);
 void	render_step_text(t_list *list);
+void	render_enemy_patrol(t_list *list, int random_number);
 
 #endif

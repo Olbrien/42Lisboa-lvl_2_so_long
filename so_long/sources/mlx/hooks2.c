@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 02:18:23 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 01:46:01 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 04:34:00 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	move_player_key_w(t_list *list, int x, int y)
 		list->tilemap[y][x].up->type = PLAYER_POSITION;
 		list->tilemap[y][x].up->image = list->tilemap[y][x].image;
 		list->tilemap[y][x].up->image_number = list->tilemap[y][x].image_number;
-		list->tilemap[y][x].type = EMPTY_SPACE;
-		list->tilemap[y][x].image = NULL;
 		list->tilemap[y][x].type = EMPTY_SPACE;
 		list->tilemap[y][x].image = NULL;
 		player_moved(list);
@@ -52,8 +50,6 @@ void	move_player_key_d(t_list *list, int x, int y)
 			= list->tilemap[y][x].image_number;
 		list->tilemap[y][x].type = EMPTY_SPACE;
 		list->tilemap[y][x].image = NULL;
-		list->tilemap[y][x].type = EMPTY_SPACE;
-		list->tilemap[y][x].image = NULL;
 		player_moved(list);
 	}
 	if ((list->tilemap[y][x].right
@@ -79,8 +75,6 @@ void	move_player_key_s(t_list *list, int x, int y)
 			= list->tilemap[y][x].image_number;
 		list->tilemap[y][x].type = EMPTY_SPACE;
 		list->tilemap[y][x].image = NULL;
-		list->tilemap[y][x].type = EMPTY_SPACE;
-		list->tilemap[y][x].image = NULL;
 		player_moved(list);
 	}
 	if ((list->tilemap[y][x].down
@@ -104,8 +98,6 @@ void	move_player_key_a(t_list *list, int x, int y)
 		list->tilemap[y][x].left->image = list->tilemap[y][x].image;
 		list->tilemap[y][x].left->image_number
 			= list->tilemap[y][x].image_number;
-		list->tilemap[y][x].type = EMPTY_SPACE;
-		list->tilemap[y][x].image = NULL;
 		list->tilemap[y][x].type = EMPTY_SPACE;
 		list->tilemap[y][x].image = NULL;
 		player_moved(list);
