@@ -15,13 +15,13 @@ LINUX = -lbsd -lmlx -lXext -lX11 -lm
 MAC   = -lmlx -framework OpenGL -framework AppKit -lm
 
 ifeq ($(UNAME), Darwin)
-	CFLAGS = -Wall -Wextra -Werror -I $(MAC) $(FLAGS_INC) -D "LINUX=0" -g
-	SFLAGS = -Wall -Wextra -Werror -I $(MAC) -fsanitize=address $(FLAGS_INC) -D "LINUX=0" -g
-	LFLAGS = -Wall -Wextra -Werror -I $(MAC) -fsanitize=leak $(FLAGS_INC) -D "LINUX=0" -g
+	CFLAGS = -Wall -Wextra -Werror -I $(MAC) -D "LINUX=0" -g
+	SFLAGS = -Wall -Wextra -Werror -I $(MAC) -fsanitize=address -D "LINUX=0" -g
+	LFLAGS = -Wall -Wextra -Werror -I $(MAC) -fsanitize=leak -D "LINUX=0" -g
 else
-	CFLAGS = -Wall -Wextra -Werror -I $(LINUX) $(FLAGS_INC) -D "LINUX=1" -g
-	SFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=address $(FLAGS_INC) -D "LINUX=1" -g
-	LFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=leak $(FLAGS_INC) -D "LINUX=1" -g
+	CFLAGS = -Wall -Wextra -Werror -I $(LINUX) -D "LINUX=1" -g
+	SFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=address -D "LINUX=1" -g
+	LFLAGS = -Wall -Wextra -Werror -I $(LINUX) -fsanitize=leak -D "LINUX=1" -g
 endif
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
@@ -55,13 +55,13 @@ leaks: clear fclean message debug_l clean               # Compiles with fsanitiz
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@printf "\033[0;33mGenerating ${PROGRAM} objects... %s\n" $@
 	@mkdir -p $(dir $@)
-	@${CC} ${FLAGS_INC} ${CFLAGS} -c $< -o $@
+	@${CC} ${FLAGS_INC} ${CFLAGS} $(FLAGS_INC) -c $< -o $@
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
 $(PROGRAM): $(OBJS)
 	@echo "\n\033[0;32mCompiling ${PROGRAM}..."
-	@$(CC) $(OBJS) $(CFLAGS) -o $(PROGRAM)
+	@$(CC) $(OBJS) $(CFLAGS) $(FLAGS_INC) -o $(PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(PROGRAM) $(BIN_DIR)
 
@@ -69,13 +69,13 @@ $(PROGRAM): $(OBJS)
 
 debug_s: $(OBJS)
 	@echo "\n\033[0;32mCompiling ${PROGRAM}..."
-	@$(CC) $(OBJS) $(SFLAGS) -o $(PROGRAM)
+	@$(CC) $(OBJS) $(SFLAGS) $(FLAGS_INC) -o $(PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(PROGRAM) $(BIN_DIR)
 
 debug_l: $(OBJS)
 	@echo "\n\033[0;32mCompiling ${PROGRAM}..."
-	@$(CC) $(OBJS) $(LFLAGS) -o $(PROGRAM)
+	@$(CC) $(OBJS) $(LFLAGS) $(FLAGS_INC) -o $(PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(PROGRAM) $(BIN_DIR)
 
@@ -120,9 +120,12 @@ clear:
 
 BONUS_PROGRAM     = so_long_bonus
 
+BONUS_INC_DIR     = includes_bonus
 BONUS_OBJ_DIR     = objects_bonus
 
 BONUS_SRC_DIR     = sources_bonus
+
+BONUS_FLAGS_INC   = -I $(BONUS_INC_DIR)
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
@@ -154,13 +157,13 @@ BONUS_OBJS = $(BONUS_SRC:$(BONUS_SRC_DIR)/%.c=$(BONUS_OBJ_DIR)/%.o)
 $(BONUS_OBJ_DIR)/%.o: $(BONUS_SRC_DIR)/%.c
 	@printf "\033[0;33mGenerating ${BONUS_PROGRAM} objects... %s\n" $@
 	@mkdir -p $(dir $@)
-	@${CC} ${FLAGS_INC} ${CFLAGS} -c $< -o $@
+	@${CC} ${FLAGS_INC} ${CFLAGS} ${BONUS_FLAGS_INC} -c $< -o $@
 
 #### ######## #### #### ######## #### #### ######## #### #### ######## #### #### ######## ####
 
 $(BONUS_PROGRAM): $(BONUS_OBJS)
 	@echo "\n\033[0;32mCompiling ${BONUS_PROGRAM}..."
-	@$(CC) $(BONUS_OBJS) $(CFLAGS) -o $(BONUS_PROGRAM)
+	@$(CC) $(BONUS_OBJS) $(CFLAGS) ${BONUS_FLAGS_INC} -o $(BONUS_PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(BONUS_PROGRAM) $(BIN_DIR)
 
@@ -168,13 +171,13 @@ $(BONUS_PROGRAM): $(BONUS_OBJS)
 
 bonus_debug_s: $(BONUS_OBJS)
 	@echo "\n\033[0;32mCompiling ${BONUS_PROGRAM}..."
-	@$(CC) $(BONUS_OBJS) $(SFLAGS) -o $(BONUS_PROGRAM)
+	@$(CC) $(BONUS_OBJS) $(SFLAGS) ${BONUS_FLAGS_INC} -o $(BONUS_PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(BONUS_PROGRAM) $(BIN_DIR)
 
 bonus_debug_l: $(BONUS_OBJS)
 	@echo "\n\033[0;32mCompiling ${BONUS_PROGRAM}..."
-	@$(CC) $(BONUS_OBJS) $(LFLAGS) -o $(BONUS_PROGRAM)
+	@$(CC) $(BONUS_OBJS) $(LFLAGS) ${BONUS_FLAGS_INC} -o $(BONUS_PROGRAM)
 	@mkdir -p $(BIN_DIR)
 	@mv $(BONUS_PROGRAM) $(BIN_DIR)
 

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   validation_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 02:28:33 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 20:42:31 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:16:06 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	check_map_components(t_list *list)
 {
 	int		i;
 	char	*valid_components;
 
-	valid_components = "01CEP";
+	valid_components = "01CEPX";
 	i = 0;
 	while (list->map.map[i] != '\0')
 	{

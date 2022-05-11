@@ -6,11 +6,11 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 18:36:33 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 02:59:45 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:16:40 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	open_plant_images(t_list *list)
 {

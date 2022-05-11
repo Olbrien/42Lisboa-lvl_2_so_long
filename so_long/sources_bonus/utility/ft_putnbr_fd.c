@@ -6,11 +6,11 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 04:07:22 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 04:07:23 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:17:06 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

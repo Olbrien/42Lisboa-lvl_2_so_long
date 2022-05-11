@@ -6,11 +6,11 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 00:37:18 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 00:37:31 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:17:07 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char	*ft_strdup(const char *s)
 {

@@ -6,11 +6,11 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 00:35:43 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 00:35:45 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:17:03 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	count_words(const char *str, char c)
 {

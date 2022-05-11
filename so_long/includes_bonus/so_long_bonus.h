@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 02:34:37 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:11:35 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# include "events.h"
-# include "masks.h"
-# include "keys.h"
-# include "images.h"
+# include "events_bonus.h"
+# include "masks_bonus.h"
+# include "keys_bonus.h"
+# include "images_bonus.h"
 
 # ifndef DEBUG
-#  define DEBUG 0
+#  define DEBUG 1
 # endif
 
 /*****************************************/
@@ -42,6 +42,7 @@
 # define COLLECTIBLE 'C'
 # define MAP_EXIT 'E'
 # define PLAYER_POSITION 'P'
+# define ENEMY 'X'
 
 /*****************************************/
 /*                 Data                  */

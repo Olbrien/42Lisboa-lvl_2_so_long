@@ -6,11 +6,11 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 04:04:18 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/09 04:04:35 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:17:01 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

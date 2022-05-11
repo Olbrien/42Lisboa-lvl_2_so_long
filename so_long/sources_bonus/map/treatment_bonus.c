@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treatment.c                                        :+:      :+:    :+:   */
+/*   treatment_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:07 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 20:46:12 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:16:57 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	remove_new_lines_from_map(t_list *list, int i, int line_break)
 {
