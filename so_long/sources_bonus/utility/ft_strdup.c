@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images.h                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 18:56:00 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:04:21 by tisantos         ###   ########.fr       */
+/*   Created: 2022/05/09 00:37:18 by tisantos          #+#    #+#             */
+/*   Updated: 2022/05/09 00:37:31 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGES_H
-# define IMAGES_H
+#include "so_long.h"
 
-# define DOOR_01 "assets/xpm/door_01.xpm"
-# define DOOR_02 "assets/xpm/door_02.xpm"
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+	int		len;
+	int		i;
 
-# define PLANT_01 "assets/xpm/plant_01.xpm"
-# define PLANT_02 "assets/xpm/plant_02.xpm"
-
-# define PLAYER_01 "assets/xpm/player_01.xpm"
-# define PLAYER_02 "assets/xpm/player_02.xpm"
-
-# define WALL_01 "assets/xpm/wall_01.xpm"
-
-#endif
+	len = 0;
+	i = 0;
+	while (s[len] != '\0')
+		len++;
+	dest = malloc(sizeof(*dest) * len + 1);
+	if (dest == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

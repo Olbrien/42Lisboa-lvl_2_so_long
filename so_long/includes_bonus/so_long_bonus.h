@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:04:43 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 02:34:37 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <mlx.h>
 # include <math.h>
@@ -92,13 +92,36 @@ typedef struct s_images
 	void	*door_01;
 	void	*door_02;
 
+	void	*effect_w;
+
+	void	*enemy_01;
+	void	*enemy_02;
+	void	*enemy_03;
+	void	*enemy_04;
+
 	void	*plant_01;
 	void	*plant_02;
+	void	*plant_03;
+	void	*plant_04;
 
 	void	*player_01;
 	void	*player_02;
+	void	*player_03;
 
 	void	*wall_01;
+	void	*wall_02;
+
+	void	*wall_d;
+	void	*wall_dl;
+	void	*wall_dr;
+
+	void	*wall_l;
+	void	*wall_r;
+
+	void	*wall_u;
+	void	*wall_ul;
+	void	*wall_ur;
+
 }	t_images;
 
 /**********/
@@ -141,6 +164,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	images_treatment(t_list *list);
 
 void	open_wall_images(t_list *list);
+void	open_wall2_images(t_list *list);
 void	open_player_images(t_list *list);
 void	fill_tilemap_with_images(t_list *list);
 

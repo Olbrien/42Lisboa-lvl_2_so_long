@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treatment.c                                        :+:      :+:    :+:   */
+/*   treatment_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 18:36:33 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:04:03 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 02:59:45 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,31 @@ void	open_plant_images(t_list *list)
 			&width, &height);
 	if (list->images.plant_02 == NULL)
 		exit_error("Could not load image plant_02\n", list);
+	list->images.plant_03 = mlx_xpm_file_to_image(list->mlx.mlx_ptr, PLANT_03,
+			&width, &height);
+}
+
+void	open_enemy_images(t_list *list)
+{
+	int	width;
+	int	height;
+
+	list->images.enemy_01 = mlx_xpm_file_to_image(list->mlx.mlx_ptr, ENEMY_01,
+			&width, &height);
+	if (list->images.enemy_01 == NULL)
+		exit_error("Could not load image enemy_01\n", list);
+	list->images.enemy_02 = mlx_xpm_file_to_image(list->mlx.mlx_ptr, ENEMY_02,
+			&width, &height);
+	if (list->images.enemy_02 == NULL)
+		exit_error("Could not load image enemy_02\n", list);
+	list->images.enemy_03 = mlx_xpm_file_to_image(list->mlx.mlx_ptr, ENEMY_03,
+			&width, &height);
+	if (list->images.enemy_03 == NULL)
+		exit_error("Could not load image enemy_03\n", list);
+	list->images.enemy_04 = mlx_xpm_file_to_image(list->mlx.mlx_ptr, ENEMY_04,
+			&width, &height);
+	if (list->images.enemy_04 == NULL)
+		exit_error("Could not load image enemy_04\n", list);
 }
 
 void	open_door_images(t_list *list)
@@ -45,7 +70,9 @@ void	open_door_images(t_list *list)
 void	images_treatment(t_list *list)
 {
 	open_door_images(list);
+	open_enemy_images(list);
 	open_plant_images(list);
 	open_player_images(list);
 	open_wall_images(list);
+	open_wall2_images(list);
 }

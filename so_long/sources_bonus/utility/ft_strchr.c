@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images.h                                           :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 18:56:00 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:04:21 by tisantos         ###   ########.fr       */
+/*   Created: 2022/05/09 03:33:44 by tisantos          #+#    #+#             */
+/*   Updated: 2022/05/09 03:33:46 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGES_H
-# define IMAGES_H
+#include "so_long.h"
 
-# define DOOR_01 "assets/xpm/door_01.xpm"
-# define DOOR_02 "assets/xpm/door_02.xpm"
+char	*ft_strchr(const char *str, int c)
+{
+	int		i;
+	char	*new_str;
 
-# define PLANT_01 "assets/xpm/plant_01.xpm"
-# define PLANT_02 "assets/xpm/plant_02.xpm"
-
-# define PLAYER_01 "assets/xpm/player_01.xpm"
-# define PLAYER_02 "assets/xpm/player_02.xpm"
-
-# define WALL_01 "assets/xpm/wall_01.xpm"
-
-#endif
+	i = 0;
+	new_str = (char *)str;
+	while (str[i] != c)
+	{
+		if (str[i] == '\0')
+			return (NULL);
+		i++;
+		new_str++;
+	}
+	return (new_str);
+}
