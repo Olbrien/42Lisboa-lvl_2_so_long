@@ -6,11 +6,31 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:01 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 18:11:14 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 05:46:37 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	free_mlx(t_list *list)
+{
+	if (list->images.door_01 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.door_01);
+	if (list->images.door_02 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.door_02);
+	if (list->images.plant_01 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.plant_01);
+	if (list->images.plant_02 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.plant_02);
+	if (list->images.player_01 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.player_01);
+	if (list->images.player_02 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.player_02);
+	if (list->images.wall_01 != NULL)
+		mlx_destroy_image(list->mlx.mlx_ptr, list->images.wall_01);
+	if (list->mlx.win_ptr != NULL)
+		mlx_destroy_window(list->mlx.mlx_ptr, list->mlx.win_ptr);
+}
 
 void	free_list(t_list *list)
 {
@@ -42,7 +62,10 @@ void	exit_error(char *str, t_list *list)
 	int	len;
 
 	if (list != NULL)
+	{
 		free_list(list);
+		free_mlx(list);
+	}
 	len = ft_strlen(str);
 	write(2, "Error\n", 6);
 	write(2, str, len);
@@ -52,7 +75,10 @@ void	exit_error(char *str, t_list *list)
 int	exit_no_error(t_list *list)
 {
 	if (list != NULL)
+	{
 		free_list(list);
+		free_mlx(list);
+	}
 	exit(0);
 }
 

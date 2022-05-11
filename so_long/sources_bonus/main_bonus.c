@@ -6,11 +6,26 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 04:23:18 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 05:55:36 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	config_list2(t_list *list)
+{
+	list->images.door_01 = NULL;
+	list->images.door_02 = NULL;
+	list->images.plant_01 = NULL;
+	list->images.plant_02 = NULL;
+	list->images.player_01 = NULL;
+	list->images.player_02 = NULL;
+	list->images.wall_01 = NULL;
+	list->images.enemy_01 = NULL;
+	list->images.enemy_02 = NULL;
+	list->images.enemy_03 = NULL;
+	list->images.enemy_04 = NULL;
+}
 
 void	config_list(t_list *list)
 {
@@ -62,6 +77,7 @@ int	main(int argc, char **argv)
 
 	srand(time(NULL));
 	config_list(&list);
+	config_list2(&list);
 	check_args(argc, argv);
 	map_treatment(&list, argv[1]);
 	tilemap_treatment(&list);

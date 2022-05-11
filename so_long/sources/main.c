@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:19:10 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 05:38:12 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ void	config_list(t_list *list)
 	list->steps = 0;
 	list->current_player_x = 0;
 	list->current_player_y = 0;
+	list->images.door_01 = NULL;
+	list->images.door_02 = NULL;
+	list->images.plant_01 = NULL;
+	list->images.plant_02 = NULL;
+	list->images.player_01 = NULL;
+	list->images.player_02 = NULL;
+	list->images.wall_01 = NULL;
 }
 
 void	check_args(int argc, char **argv)
