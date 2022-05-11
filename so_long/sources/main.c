@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:03:58 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 00:24:09 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:42:19 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,13 @@ void	config_list(t_list *list)
 	list->map.collectibles = 0;
 	list->map.map_exit = 0;
 	list->map.players = 0;
-
 	list->mlx.mlx_ptr = NULL;
 	list->mlx.win_ptr = NULL;
 	list->mlx.height = 0;
 	list->mlx.width = 0;
-
-	list->effects.img_white_flash_ptr = NULL;
-	list->effects.img_red_flash_ptr = NULL;
-	list->effects.img_pink_flash_ptr = NULL;
-
 	list->tilemap = NULL;
-
 	list->key_pressed = 0;
 	list->steps = 0;
-
 	list->current_player_x = 0;
 	list->current_player_y = 0;
 }
@@ -76,6 +68,5 @@ int	main(int argc, char **argv)
 		debug(&list);
 	config_game(&list);
 	free_list(&list);
-
-	return(0);
+	return (0);
 }

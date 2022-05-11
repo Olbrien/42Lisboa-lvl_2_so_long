@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:14 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 00:31:39 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:41:49 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 typedef struct s_tilemap
 {
 	char				type;
-	char				original_type;
 
 	int					width;
 	int					height;
@@ -125,29 +124,6 @@ typedef struct s_images
 
 }	t_images;
 
-/********/
-/* Color */
-/********/
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
-
-}	t_color;
-
-/**********/
-/* Effects */
-/***********/
-typedef struct s_effects
-{
-	void	*img_white_flash_ptr;
-	void	*img_red_flash_ptr;
-	void	*img_pink_flash_ptr;
-
-}	t_effects;
-
 /**********/
 /* General */
 /**********/
@@ -155,7 +131,6 @@ typedef struct s_list
 {
 	struct s_map		map;
 	struct s_mlx		mlx;
-	struct s_effects	effects;
 	struct s_images		images;
 	struct s_tilemap	**tilemap;
 
@@ -210,15 +185,12 @@ void	check_map_components(t_list *list);
 void	config_game(t_list *list);
 
 int		key_press(int keycode, t_list *list);
-int		key_release(int keycode, t_list *list);
+void	player_moved(t_list *list);
 
 void	move_player(t_list *list, char key_pressed, int x, int y);
 
 void	render_tiles(t_list *list);
 void	render_animations(t_list *list);
-
-void	color_panel(t_list *list, void **img_ptr, t_color color, int x);
-void	create_panel(t_list *list, void **img_ptr, t_color color);
-t_color	create_color(int r, int g, int b, int a);
+void	render_exit(t_list *list);
 
 #endif

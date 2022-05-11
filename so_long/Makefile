@@ -29,7 +29,7 @@ endif
 SRCS_MAIN     = main
 SRCS_IMAGES   = treatment treatment2
 SRCS_MAP      = treatment validation tilemap
-SRCS_MLX      = game panel hooks hooks2 render
+SRCS_MLX      = game hooks hooks2 render
 SRCS_UTILITY  = utils ft_split ft_strdup ft_strjoin ft_strlen ft_strchr ft_putchar_fd \
 				ft_putnbr_fd
 

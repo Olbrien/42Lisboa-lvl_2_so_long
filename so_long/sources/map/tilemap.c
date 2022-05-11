@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 04:06:18 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/10 18:22:15 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:30:00 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	fill_tilemap_2(t_list *list, int y, int x)
 {
 	list->tilemap[y][x].type = list->map.map_splitted[y][x];
-	list->tilemap[y][x].original_type = list->map.map_splitted[y][x];
 	list->tilemap[y][x].width = x;
 	list->tilemap[y][x].height = y;
 	if (y - 1 >= 0)
