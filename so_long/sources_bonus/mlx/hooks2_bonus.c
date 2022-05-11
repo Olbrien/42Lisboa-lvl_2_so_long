@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 02:18:23 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:16:59 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 03:35:41 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	move_player_key_w(t_list *list, int x, int y)
 		player_moved(list);
 		exit_no_error(list);
 	}
+	if (list->tilemap[y][x].up && list->tilemap[y][x].up->type == 'X')
+		exit_no_error(list);
 }
 
 void	move_player_key_d(t_list *list, int x, int y)
@@ -62,6 +64,8 @@ void	move_player_key_d(t_list *list, int x, int y)
 		player_moved(list);
 		exit_no_error(list);
 	}
+	if (list->tilemap[y][x].right && list->tilemap[y][x].right->type == 'X')
+		exit_no_error(list);
 }
 
 void	move_player_key_s(t_list *list, int x, int y)
@@ -89,6 +93,8 @@ void	move_player_key_s(t_list *list, int x, int y)
 		player_moved(list);
 		exit_no_error(list);
 	}
+	if (list->tilemap[y][x].down && list->tilemap[y][x].down->type == 'X')
+		exit_no_error(list);
 }
 
 void	move_player_key_a(t_list *list, int x, int y)
@@ -116,6 +122,8 @@ void	move_player_key_a(t_list *list, int x, int y)
 		player_moved(list);
 		exit_no_error(list);
 	}
+	if (list->tilemap[y][x].left && list->tilemap[y][x].left->type == 'X')
+		exit_no_error(list);
 }
 
 void	move_player(t_list *list, char key_pressed, int x, int y)

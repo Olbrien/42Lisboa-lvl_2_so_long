@@ -132,9 +132,9 @@ BONUS_FLAGS_INC   = -I $(BONUS_INC_DIR)
 BONUS_SRCS_MAIN     = main_bonus
 BONUS_SRCS_IMAGES   = treatment_bonus treatment2_bonus
 BONUS_SRCS_MAP      = treatment_bonus validation_bonus tilemap_bonus
-BONUS_SRCS_MLX      = game_bonus hooks_bonus hooks2_bonus render_bonus
+BONUS_SRCS_MLX      = game_bonus hooks_bonus hooks2_bonus render_bonus render_bonus2
 BONUS_SRCS_UTILITY  = utils_bonus ft_split ft_strdup ft_strjoin ft_strlen ft_strchr ft_putchar_fd \
-					ft_putnbr_fd
+					ft_itoa ft_putnbr_fd
 
 BONUS_SRC = $(addsuffix .c, $(addprefix sources_bonus/, $(BONUS_SRCS_MAIN))) \
             $(addsuffix .c, $(addprefix sources_bonus/images/, $(BONUS_SRCS_IMAGES))) \

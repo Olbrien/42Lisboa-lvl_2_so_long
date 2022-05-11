@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 16:59:55 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:16:46 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/11 04:12:31 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	loop(t_list *list)
 	static int		frames = 0;
 
 	mlx_clear_window(list->mlx.mlx_ptr, list->mlx.win_ptr);
+	render_step_text(list);
 	render_tiles(list);
 	if (list->map.collectibles == 0)
 		render_exit(list);
@@ -46,7 +47,7 @@ void	init_game(t_list *list)
 	if (!list->mlx.mlx_ptr)
 		exit_error("Could not initialize mlx\n", list);
 	list->mlx.win_ptr = mlx_new_window (list->mlx.mlx_ptr, list->mlx.width,
-			list->mlx.height, "so_long");
+			list->mlx.height + 25, "so_long");
 	if (!list->mlx.win_ptr)
 		exit_error("Could not initialize window\n", list);
 }
