@@ -6,7 +6,7 @@
 /*   By: tisantos <tisantos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 22:58:07 by tisantos          #+#    #+#             */
-/*   Updated: 2022/05/11 03:16:57 by tisantos         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:14:04 by tisantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ void	parse_map_to_struct(t_list *list, char *map_file)
 	int		map_fd;
 	char	buffer[2];
 	char	*temp;
+	int		empty;
 
 	map_fd = open(map_file, O_RDONLY);
+	empty = 0;
 	if (map_fd == -1)
 		exit_error("Map file not found or has an error\n", list);
 	while (read(map_fd, &buffer, 1) > 0)
@@ -78,8 +80,11 @@ void	parse_map_to_struct(t_list *list, char *map_file)
 			free(list->map.map);
 			list->map.map = temp;
 		}
+		empty = 1;
 	}
 	close(map_fd);
+	if (empty == 0)
+		exit_error("Map is empty\n", list);
 }
 
 void	map_treatment(t_list *list, char *map_file)
